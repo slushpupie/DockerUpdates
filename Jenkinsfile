@@ -4,4 +4,5 @@ node("docker") {
     echo "Pulling ${it}"
     docker.image(it).pull()
   }
+  docker.image('ubuntu:latest').pull()
 }
