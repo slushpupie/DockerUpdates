@@ -1,7 +1,7 @@
 parallel 'update': {
-  ["jenkins:latest"].each { imageName ->
+  ["jenkins:latest"].each { 
     node("docker") {
-      docker.image(imageName).pull()
+      docker.image(it).pull()
     }
   }
 }
