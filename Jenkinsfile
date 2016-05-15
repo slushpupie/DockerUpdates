@@ -4,7 +4,7 @@ def dockerImages = ['jenkins:latest','ubuntu:latest','ubuntu:15.04','ubuntu:14.0
 def stepsForParallel = [:]
 
 for (int i = 0; i < dockerImages.size(); i++) {
-  stepsForParallel[dockerImages.get(i)] = node { docker.image(dockerImages.get(i)).pull() }
+  stepsForParallel[dockerImages.get(i)] = node('docker') { docker.image(dockerImages.get(i)).pull() }
 }
 
 parallel stepsForParallel
