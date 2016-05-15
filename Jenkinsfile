@@ -1,12 +1,11 @@
 stage 'pull updates'
-node("docker") {
-parallel {
-  docker.image('jenkins:latest').pull()
-  docker.image('ubuntu:latest').pull()
-  docker.image('ubuntu:15.04').pull()
-  docker.image('ubuntu:14.04').pull()
-  docker.image('centos:centos7').pull()
-  docker.image('nginx:latest').pull()
-  docker.image('tomcat:8-jre8').pull()
-}
-}
+
+def dockerImages = ['jenkins:latest','ubuntu:latest','ubuntu:15.04','ubuntu:14.04','centos:centos7','nginx:latest','tomcat:8-jre8']
+def stepsForParallel = [:]
+
+for (int i = 0; i < dockerImages.size(); i++) {
+  stepsForParallel[dockerImages.get(i)] = node { docker.image(dockerImages.get(i)).pull() }
+
+
+parallel stepsForParallel
+
