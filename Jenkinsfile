@@ -1,6 +1,6 @@
 stage 'pull updates'
 
-def dockerImages = ['jenkins:latest','ubuntu:latest','ubuntu:15.04','ubuntu:14.04','centos:centos7','nginx:latest','tomcat:8-jre8']
+def dockerImages = ['jenkins:2.3','jenkins:latest','ubuntu:latest','ubuntu:15.04','ubuntu:14.04','centos:centos7','nginx:latest','tomcat:8-jre8']
 def stepsForParallel = [:]
 
 for (int i = 0; i < dockerImages.size(); i++) {
