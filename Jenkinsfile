@@ -18,6 +18,7 @@ def transformIntoStep(image) {
     return {
         node('docker') {
             docker.image(image).pull()
+            hipchatSend color: 'GRAY', message: 'Docker image '+image+' updated', notify: true, room: 'Notifications', sendAs: 'Jenkins', server: '', token: 'E837UXwIDloQf4ZwdbCnp3np6YSbUrKgyiyCuFQw', v2enabled: true
         }
     }
 }
