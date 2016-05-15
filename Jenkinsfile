@@ -16,7 +16,7 @@ def transformIntoStep(image) {
     // To do this, you need to wrap the code below in { }, and either return
     // that explicitly, or use { -> } syntax.
     return {
-        node('node') {
+        node('docker') {
             docker.image(image).pull()
         }
     }
