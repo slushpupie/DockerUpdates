@@ -5,7 +5,7 @@ def stepsForParallel = [:]
 
 for (int i = 0; i < dockerImages.size(); i++) {
   stepsForParallel[dockerImages.get(i)] = node { docker.image(dockerImages.get(i)).pull() }
-
+}
 
 parallel stepsForParallel
 
